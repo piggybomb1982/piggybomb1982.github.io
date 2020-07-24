@@ -67,9 +67,10 @@
         const HSIZE = 800;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
-        const net = await posenet.load();
+        
 
-        function main() {
+        async function main() {
+            const net = await posenet.load();
             CAMERA = document.getElementById('camera');
             CAMERA.width = WSIZE;
             CAMERA.height = HSIZE;

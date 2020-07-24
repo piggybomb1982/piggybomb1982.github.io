@@ -113,13 +113,25 @@
         function updateImage(video){
             const context = CANVAS.getContext('2d');
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
+
+            posenet.load().then(function(net) {
+            const pose = net.estimateSinglePose(CAMERA, {
+                flipHorizontal: true
+            });
+            return pose;
+            }).then(function(pose){
+            getPose(pose);
+            })        
         }
 
-        function getDuration() {
+        //function getDuration() {
             //動画の長さ（秒）を表示
-            document.getElementById("nagasa").innerHTML = CAMERA.duration;
+            //document.getElementById("nagasa").innerHTML = CAMERA.duration;
+        //}
+        function getPose(pose) {
+            //動画の長さ（秒）を表示
+            document.getElementById("nagasa").innerHTML = pose.keypoints.position.x;
         }
-
         function playVideo() {
             //再生完了の表示をクリア
             document.getElementById("kanryou").innerHTML = "";

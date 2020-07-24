@@ -113,7 +113,7 @@
             });
         }
         
-        function updateImage(video, net){
+        async function updateImage(video, net){
             const context = CANVAS.getContext('2d');
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 

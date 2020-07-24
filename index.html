@@ -72,19 +72,19 @@
             for(var i=0, l=element_l2.length; i<l; i++){
                 //今回はi=0のみ
                 element_l1[i].style.width   =  String(WSIZE)  + "px";
-                element_l1[i].style.height  =  String(WSIZE) + "px";
+                element_l1[i].style.height  =  String(HSIZE) + "px";
             }
 
             //l2への設定
             for(var i=0, l=element_l2.length; i<l; i++){
                 //今回はi=0のみ
                 element_l2[i].style.width   =  String(WSIZE)  + "px";
-                element_l2[i].style.height  =  String(WSIZE) + "px";
+                element_l2[i].style.height  =  String(HSIZE) + "px";
             }
 
             //camera_record_boxへの設定
             element_box.setAttribute("width",  String(WSIZE)  + "px");
-            element_box.setAttribute("height", String(WSIZE) + "px");
+            element_box.setAttribute("height", String(HSIZE) + "px");
             /** カメラ設定 */
             const constraints = {
                 audio: false,

@@ -17,6 +17,7 @@
         var EFFECTS_CAMERA = null;
         const SIZE = 400;
         const INTERVAL = 42;
+        var COLOR = [4, 104, 39];
 
         function main() {
             CANVAS_CAMERA = document.getElementById('camera');
@@ -54,7 +55,22 @@
         
         function updateImage(video){
             const context = CANVAS_CAMERA.getContext('2d');
-            context.drawImage(video, 0, 0, SIZE, SIZE)
+            const minSize = Math.min(video.videoWidth,video.videoHeight);
+            const startX = (video.videoWidth - minSize) / 2;
+            const startY = (video.videoHeight - minSize) / 2;
+            context.drawImage(video, startX, startY, minSize, minSize, 0, 0, SIZE, SIZE)
+        }
+
+        function getPointerPixels(){
+            const context = CANVAS_CAMERA.getContext('2d');
+            const imageData = context.getImageData(0, 0, SIZE, SIZE);
+            const oneDArray = imageData.data;
+            var pixelLocations = [];
+            for (var y = 0; y < SIZE; y++) {
+                for (var x=0; x<SIZE; x++) {
+                    const r = oneDArray[y*SIZE*4 + x*4 + 0];
+                }
+            }
         }
     </script>
 </head>

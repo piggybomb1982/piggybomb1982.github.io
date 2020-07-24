@@ -116,11 +116,13 @@
         async function updateImage(video, net){
             const context = CANVAS.getContext('2d');
             const pose = await net.estimateSinglePose(CAMERA, {
-                flipHorizontal: true
+                flipHorizontal: false
             });
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
-            context.fillRect(pose.keypoints[0].position.x, pose.keypoints[0].position.y, 10, 10);
-
+            if(pose.keypoints[0].score > 0.5){
+                context.fillStyle = "rgb(255, 0, 0)";
+                context.fillRect(pose.keypoints[0].position.x, pose.keypoints[0].position.y, 10, 10);
+            }
             //getPose(pose);       
         }
 

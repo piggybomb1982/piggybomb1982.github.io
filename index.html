@@ -88,7 +88,7 @@
     <script>
         var CANVAS_CAMERA = null;
         var EFFECTS_CAMERA = null;
-        const SIZE = 400;
+        // const SIZE = 400;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
@@ -103,8 +103,8 @@
             const constraints = {
                 audio: false,
                 video: {
-                width: 500,
-                height: 400,
+                // width: 500,
+                // height: 400,
                 //flipHorizontal: ture,
                 facingMode: "user"   // フロントカメラを利用する
                 //facingMode: { exact: "environment" }  // リアカメラを利用する場合
@@ -130,7 +130,7 @@
         
         function updateImage(video){
             const context = CANVAS.getContext('2d');
-            context.drawImage(video, 0, 0, SIZE, SIZE)
+            context.drawImage(video)
         }
 
     </script>

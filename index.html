@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Camera Test</title>
-    <style>
-    canvas, video{
-        border: 1px solid gray;
-    }
-    </style>
-
     <style type="text/css">
         .parent {
             position: relative; /*relativeに設定*/
@@ -46,17 +40,18 @@
     <script>
         var CANVAS_CAMERA = null;
         var EFFECTS_CAMERA = null;
-        // const SIZE = 400;
+        const WSIZE = window.innerWidth;
+        const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
         function main() {
             CAMERA = document.getElementById('camera');
-            //CAMERA.width = SIZE;
-            //CAMERA.height = SIZE;
+            CAMERA.width = WSIZE;
+            CAMERA.height = HSIZE;
             CANVAS = document.getElementById('canvas');
-            //CANVAS.width = SIZE;
-            //CANVAS.height = SIZE;
+            CANVAS.width = WSIZE;
+            CANVAS.height = HSIZE;
             /** カメラ設定 */
             const constraints = {
                 audio: false,

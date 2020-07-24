@@ -22,24 +22,20 @@
     <!-- Load Posenet -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
     <script>
-        var CAMERA = document.getElementById('camera');
-        var CANVAS = document.getElementById('canvas');
+        var CAMERA = null;
+        var CANVAS = null;
         const WSIZE = window.innerWidth;
         const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
-        CAMERA.width = WSIZE;
-        CAMERA.height = HSIZE;
-        CANVAS.width = WSIZE;
-        CANVAS.height = HSIZE;
 
         function main() {
-            //CAMERA = document.getElementById('camera');
-            //CAMERA.width = WSIZE;
-            //AMERA.height = HSIZE;
-            //CANVAS = document.getElementById('canvas');
-            //CANVAS.width = WSIZE;
-            //CANVAS.height = HSIZE;
+            CAMERA = document.getElementById('camera');
+            CAMERA.width = WSIZE;
+            CAMERA.height = HSIZE;
+            CANVAS = document.getElementById('canvas');
+            CANVAS.width = WSIZE;
+            CANVAS.height = HSIZE;
             var element_box = document.getElementById('canvas');
 
             //camera_record_boxへの設定

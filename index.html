@@ -38,6 +38,12 @@
             border: 1px solid red; /*赤い撮影枠*/
             padding: 0em 0em;
         }
+        /* インカメで左右反転 */
+        video.active, canvas.active {
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg);
+            -moz-transform:rotateY(180deg);
+        }
     </style>
     <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>

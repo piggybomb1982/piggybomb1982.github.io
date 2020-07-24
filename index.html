@@ -8,6 +8,79 @@
         border: 1px solid gray;
     }
     </style>
+
+    <style type="text/css">
+        .parent {
+            width: 720px;
+            height: 0px;
+            position: relative; /*relativeに設定*/
+            border: 3px solid black;
+            padding: 0em 0em;
+            margin:0;
+        }
+        .l1 { /*前回の話の通り、動画ストリームが確定してから自動的にサイズが決まる*/
+            top: 0px;
+            left: 0px;
+            width: 720px; 
+            padding: 0em 0em;
+        }
+        .l2 {
+            top: 0px;   /*動的に変更されるので適当*/
+            left: 0px;  /*動的に変更されるので適当*/
+            width: 400px; /*撮影枠サイズ*/ 
+            height: 60px; /*撮影枠サイズ*/
+            position: absolute; /*absoluteに設定*/
+            padding: 0em 0em;
+        }
+        .l3 {
+            bottom: 0px; /*下端に配置*/
+            position: absolute; /*absoluteに設定*/
+            padding: 0em 0em;
+        }
+        #canvas{
+            position: absolute; /*absoluteに設定*/
+            border: 1px solid red; /*赤い撮影枠*/
+            padding: 0em 0em;
+        }
+    </style>
+<script type="text/javascript">
+    function notify_change_size() {
+        video_layout_width  = video.clientWidth
+        video_layout_height = video.clientHeight
+    
+        var element_parent = document.getElementsByClassName('parent');
+        var element_l2  = document.getElementsByClassName('l2');
+        var element_box = document.getElementById('canvas');
+    
+        box_width  = 400 //box size
+        box_height = 60  //box size
+    
+        left = (video_layout_width - box_width) / 2
+        top = (video_layout_height - box_height) / 2
+    
+        //parentへの設定
+        for(var i=0, l=element_parent.length; i<l; i++){
+            element_parent[i].style.width   =  String(video_layout_width)  + "px";
+            element_parent[i].style.height  =  String(video_layout_height) + "px";
+        }
+    
+        //l2への設定
+        for(var i=0, l=element_l2.length; i<l; i++){
+            //今回はi=0のみ
+            element_l2[i].style.left =  String(left)  + "px";
+            element_l2[i].style.top  =  String(top)   + "px";
+            element_l2[i].style.width   =  String(box_width)  + "px";
+            element_l2[i].style.height  =  String(box_height) + "px";
+        }
+    
+        //camera_record_boxへの設定
+        element_box.setAttribute("width",  String(box_width)  + "px");
+        element_box.setAttribute("height", String(box_height) + "px");
+    }
+    
+    videoElement.onresize = notify_change_size;
+    
+    </script>
     <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
     <!-- Load Posenet -->
@@ -62,11 +135,18 @@
 
     </script>
 </head>
-  <body onload="main()">
-
-    <h1>HTML5カメラ</h1>
-    <video id = "camera" autoplay playsinline></video>
-    <canvas id = "canvas"></canvas>
+<body onload="main()">
+    <div class="parent" width="720px">
+        <div class="l1">
+            <video id="camera" width="720px" autoplay playsinline></video>
+        </div>
+        <div class="l2">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="l3">
+            <a id="start_btn" href="#" class="start_btn">Start</a>
+        </div>
+    </div>
     <!--<script src="./js/index.js"></script>
     <video id="camera" autoplay playsinline></video>
     <canvas id="picture" width="300" height="200"></canvas>

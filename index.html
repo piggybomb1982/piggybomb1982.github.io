@@ -28,17 +28,18 @@
         const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
+        CAMERA.width = WSIZE;
+        CAMERA.height = HSIZE;
+        CANVAS.width = WSIZE;
+        CANVAS.height = HSIZE;
 
         function main() {
             //CAMERA = document.getElementById('camera');
-            CAMERA.width = WSIZE;
-            CAMERA.height = HSIZE;
+            //CAMERA.width = WSIZE;
+            //AMERA.height = HSIZE;
             //CANVAS = document.getElementById('canvas');
-            CANVAS.width = WSIZE;
-            CANVAS.height = HSIZE;
-            var element_parent = document.getElementsByClassName('parent');
-            var element_l1  = document.getElementsByClassName('l1');
-            var element_l2  = document.getElementsByClassName('l2');
+            //CANVAS.width = WSIZE;
+            //CANVAS.height = HSIZE;
             var element_box = document.getElementById('canvas');
 
             //camera_record_boxへの設定
@@ -48,9 +49,6 @@
             const constraints = {
                 audio: false,
                 video: {
-                // width: 500,
-                // height: 400,
-                //flipHorizontal: ture,
                 facingMode: "user"   // フロントカメラを利用する
                 //facingMode: { exact: "environment" }  // リアカメラを利用する場合
                 }

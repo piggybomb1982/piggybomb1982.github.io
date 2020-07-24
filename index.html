@@ -137,8 +137,8 @@
                     context.fillStyle = "rgb(255, 0, 0)";
                     context.fillRect(pose.keypoints[i].position.x, pose.keypoints[i].position.y, 10, 10);
                     r2 = Math.sqrt((pose.keypoints[i].position.x - x_old[i])^2 + (pose.keypoints[i].position.y - y_old[i])^2 );
-                    x_old[i] = ose.keypoints[i].position.x;
-                    y_old[i] = ose.keypoints[i].position.y;
+                    x_old[i] = pose.keypoints[i].position.x;
+                    y_old[i] = pose.keypoints[i].position.y;
                     cnt = cnt + 1;
                 }
             }

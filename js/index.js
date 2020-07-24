@@ -69,13 +69,13 @@
 
     step() {
       this.actionRun.next();
-      this.elm.className = this.actionRun.getKlassName();
+      //this.elm.className = this.actionRun.getKlassName();
     }
 
     flow() {
       if (this.actionJump.index < this.actionJump.MAX_INDEX) {
         this.actionJump.next();
-        this.elm.className = this.actionJump.getKlassName();
+        //this.elm.className = this.actionJump.getKlassName();
       } else {
         this.actionJump.stop();
         this.start();

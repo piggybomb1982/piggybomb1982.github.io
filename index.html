@@ -121,9 +121,9 @@
             context.clearRect(0, 0, WSIZE, HSIZE);
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
             for(var i=0; i<17; i++){
-                if(pose.keypoints[0].score > 0.5){
+                if(pose.keypoints[i].score > 0.5){
                     context.fillStyle = "rgb(255, 0, 0)";
-                    context.fillRect(pose.keypoints[0].position.x, pose.keypoints[0].position.y, 10, 10);
+                    context.fillRect(pose.keypoints[i].position.x, pose.keypoints[i].position.y, 10, 10);
                 }
             }
             //getPose(pose);       

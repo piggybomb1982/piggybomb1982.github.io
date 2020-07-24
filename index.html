@@ -48,6 +48,7 @@
     </style>
 <script type="text/javascript">
     function notify_change_size() {
+        var video = document.getElementById('camera');
         video_layout_width  = video.clientWidth
         video_layout_height = video.clientHeight
     
@@ -87,7 +88,7 @@
         element_box.setAttribute("height", String(video_layout_height) + "px");
     }
     var videoElement = document.querySelector('video#camera');
-    videoElement.onresize = notify_change_size;
+    videoElement.onresize = notify_change_size();
     
     </script>
     <!-- Load TensorFlow.js -->

@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
     <!-- Load Posenet -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
-    <!-- <script>
+    <script>
         var CANVAS_CAMERA = null;
         var EFFECTS_CAMERA = null;
         const SIZE = 400;
@@ -20,12 +20,12 @@
         var COLOR = [4, 104, 39];
 
         function main() {
-            CANVAS_CAMERA = document.getElementById('camera');
-            CANVAS_CAMERA.width = SIZE;
-            CANVAS_CAMERA.height = SIZE;
-            EFFECTS_CAMERA = document.getElementById('effects');
-            EFFECTS_CAMERA.width = SIZE;
-            EFFECTS_CAMERA.height = SIZE;
+            CAMERA = document.getElementById('camera');
+            CAMERA.width = SIZE;
+            CAMERA.height = SIZE;
+            CANVAS = document.getElementById('canvas');
+            CANVAS.width = SIZE;
+            CANVAS.height = SIZE;
             /** カメラ設定 */
             const constraints = {
                 audio: false,
@@ -56,33 +56,19 @@
         }
         
         function updateImage(video){
-            const context = CANVAS_CAMERA.getContext('2d');
-            const minSize = Math.min(video.videoWidth,video.videoHeight);
-            const startX = (video.videoWidth - minSize) / 2;
-            const startY = (video.videoHeight - minSize) / 2;
-            context.drawImage(video, startX, startY, minSize, minSize, 0, 0, SIZE, SIZE)
+            const context = CANVAS.getContext('2d');
+            context.drawImage(video, 0, 0, SIZE, SIZE)
         }
 
-        function getPointerPixels(){
-            const context = CANVAS_CAMERA.getContext('2d');
-            const imageData = context.getImageData(0, 0, SIZE, SIZE);
-            const oneDArray = imageData.data;
-            var pixelLocations = [];
-            for (var y = 0; y < SIZE; y++) {
-                for (var x=0; x<SIZE; x++) {
-                    const r = oneDArray[y*SIZE*4 + x*4 + 0];
-                }
-            }
-        }
-    </script> -->
+    </script>
 </head>
-  <body>
+  <body onload="main()">
 
     <h1>HTML5カメラ</h1>
     <video id = "camera" autoplay playsinline></video>
     <canvas id = "canvas"></canvas>
-    <script src="./js/index.js"></script>
-    <!--<video id="camera" autoplay playsinline></video>
+    <!--<script src="./js/index.js"></script>
+    <video id="camera" autoplay playsinline></video>
     <canvas id="picture" width="300" height="200"></canvas>
     <form>
       <button type="button" id="shutter">シャッター</button>

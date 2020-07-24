@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <title>Camera Test</title>
     <style type="text/css">
+        .parent {
+            top: 0px;   /*動的に変更されるので適当*/
+            left: 0px;  /*動的に変更されるので適当*/
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        .l1 { /*前回の話の通り、動画ストリームが確定してから自動的にサイズが決まる*/
+            top: 0px;   /*動的に変更されるので適当*/
+            left: 0px;  /*動的に変更されるので適当*/
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        .l2 {
+            top: 0px;   /*動的に変更されるので適当*/
+            left: 0px;  /*動的に変更されるので適当*/
+            margin:0;
+            padding:0;
+            border:0;
+        }
         /* インカメで左右反転 */
         #camera, #canvas{
             margin:0;
@@ -108,8 +129,16 @@
     </script>
 </head>
 <body onload="main()">
-    <video id="camera" autoplay playsinline></video>
-    <canvas id="canvas"></canvas>
+    <div class="parent">
+        <div class="l1">
+            <video id="camera" autoplay playsinline></video>
+        </div>
+        <div class="l2">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+        
+    
     <!--    <div style="width:400px; background-color:#333333; color:#ffffff;">
         <input type="button" value="再生" onClick="playVideo()">
         <input type="button" value="一時停止" onClick="pauseVideo()">

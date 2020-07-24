@@ -4,35 +4,6 @@
     <meta charset="UTF-8">
     <title>Camera Test</title>
     <style type="text/css">
-        .parent {
-            width: 700px;
-            height: 700px;
-            position: relative; /*relativeに設定*/
-            border: 3px solid black;
-            padding: 0em 0em;
-            margin:0;
-        }
-        .l1 { /*前回の話の通り、動画ストリームが確定してから自動的にサイズが決まる*/
-            top: 0px;
-            left: 0px;
-            width: 700px;
-            height: 700px;
-            padding: 0em 0em;
-        }
-        .l2 {
-            top: 0px;   /*動的に変更されるので適当*/
-            left: 0px;  /*動的に変更されるので適当*/
-            width: 700px;
-            height: 700px;
-            position: absolute; /*absoluteに設定*/
-            padding: 0em 0em;
-        }
-        .l3 {
-            top: 0px;   /*動的に変更されるので適当*/
-            left: 0px;  /*動的に変更されるので適当*/
-            position: absolute; /*absoluteに設定*/
-            padding: 0em 0em;
-        }
         /* インカメで左右反転 */
         #camera, #canvas{
             margin:0;
@@ -51,43 +22,24 @@
     <!-- Load Posenet -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
     <script>
-        var CANVAS_CAMERA = null;
-        var EFFECTS_CAMERA = null;
+        var CAMERA = document.getElementById('camera');
+        var CAMERA = document.getElementById('canvas');
         const WSIZE = window.innerWidth;
         const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
         function main() {
-            CAMERA = document.getElementById('camera');
+            //CAMERA = document.getElementById('camera');
             CAMERA.width = WSIZE;
             CAMERA.height = HSIZE;
-            CANVAS = document.getElementById('canvas');
+            //CANVAS = document.getElementById('canvas');
             CANVAS.width = WSIZE;
             CANVAS.height = HSIZE;
             var element_parent = document.getElementsByClassName('parent');
             var element_l1  = document.getElementsByClassName('l1');
             var element_l2  = document.getElementsByClassName('l2');
             var element_box = document.getElementById('canvas');
-
-            //parentへの設定
-            for(var i=0, l=element_parent.length; i<l; i++){
-                element_parent[i].style.width   =  String(WSIZE)  + "px";
-                element_parent[i].style.height  =  String(HSIZE) + "px";
-            }
-            //l1への設定
-            for(var i=0, l=element_l2.length; i<l; i++){
-                //今回はi=0のみ
-                element_l1[i].style.width   =  String(WSIZE)  + "px";
-                element_l1[i].style.height  =  String(HSIZE) + "px";
-            }
-
-            //l2への設定
-            for(var i=0, l=element_l2.length; i<l; i++){
-                //今回はi=0のみ
-                element_l2[i].style.width   =  String(WSIZE)  + "px";
-                element_l2[i].style.height  =  String(HSIZE) + "px";
-            }
 
             //camera_record_boxへの設定
             element_box.setAttribute("width",  String(WSIZE)  + "px");
@@ -126,11 +78,54 @@
             context.drawImage(video,0 , 0);
         }
 
+        function getDuration() {
+            //動画の長さ（秒）を表示
+            document.getElementById("nagasa").innerHTML = v.duration;
+        }
+
+        function playVideo() {
+            //再生完了の表示をクリア
+            document.getElementById("kanryou").innerHTML = "";
+            //動画を再生
+            v.play();
+            //現在の再生位置（秒）を表示
+            v.addEventListener("timeupdate", function(){
+                document.getElementById("ichi").innerHTML = v.currentTime;
+            }, false);
+            //再生完了を知らせる
+            v.addEventListener("ended", function(){
+                document.getElementById("kanryou").innerHTML = "動画の再生が完了しました。";
+            }, false);
+        }
+
+        function pauseVideo() {
+            //動画を一時停止
+            v.pause();
+        }
+
+        function upVolume() {
+            //音量を上げる
+            v.volume = v.volume + 0.25;
+        }
+
+        function downVolume() {
+            //音量を下げる
+            v.volume = v.volume - 0.25;
+        }
     </script>
 </head>
 <body onload="main()">
     <video id="camera" autoplay playsinline></video>
     <canvas id="canvas"></canvas>
+    <div style="width:400px; background-color:#333333; color:#ffffff;">
+        <input type="button" value="再生" onClick="playVideo()">
+        <input type="button" value="一時停止" onClick="pauseVideo()">
+        <input type="button" value="↑" onClick="upVolume()">
+        <input type="button" value="↓" onClick="downVolume()"><br>
+        現在（秒）：<span id="ichi">0</span><br>
+        全体（秒）：<span id="nagasa"></span><br>
+        <span id="kanryou"></span>
+    </div>
     <!--
     <div class="parent">
         <div class="l1">

@@ -67,6 +67,7 @@
         const HSIZE = 800;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
+        const net = await posenet.load();
 
         function main() {
             CAMERA = document.getElementById('camera');
@@ -96,7 +97,7 @@
              * カメラを<video>と同期
              */
             const permission = navigator.mediaDevices.getUserMedia(constraints);
-            const net = posenet.load();
+            
             permission.then(
                 function(stream) {
                     const video  = document.querySelector("#camera");
@@ -115,7 +116,7 @@
             const context = CANVAS.getContext('2d');
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 
-            const pose = net.estimateSinglePose(CAMERA, {
+            const pose = await net.estimateSinglePose(CAMERA, {
                 flipHorizontal: true
             });
             getPose(pose);       

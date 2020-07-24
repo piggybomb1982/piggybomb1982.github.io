@@ -33,13 +33,14 @@
             position: absolute; /*absoluteに設定*/
             padding: 0em 0em;
         }
-        #canvas{
-            position: absolute; /*absoluteに設定*/
-            border: 1px solid red; /*赤い撮影枠*/
-            padding: 0em 0em;
-        }
         /* インカメで左右反転 */
         #camera, #canvas{
+            margin:0;
+            padding:0;
+            border:0;
+            font:inherit;
+            font-size:100%;
+            vertical-align:baseline;
             transform: rotateY(180deg);
             -webkit-transform:rotateY(180deg);
             -moz-transform:rotateY(180deg);
@@ -128,6 +129,9 @@
     </script>
 </head>
 <body onload="main()">
+    <video id="camera" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+    <!--
     <div class="parent">
         <div class="l1">
             <video id="camera" autoplay playsinline></video>
@@ -139,7 +143,7 @@
             <a id="start_btn" href="#" class="start_btn">Start</a>
         </div>
     </div>
-    <!--<script src="./js/index.js"></script>
+    <script src="./js/index.js"></script>
     <video id="camera" autoplay playsinline></video>
     <canvas id="picture" width="300" height="200"></canvas>
     <form>

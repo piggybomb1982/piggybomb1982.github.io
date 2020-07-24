@@ -103,7 +103,7 @@
                     //const video = document.createElement('video');
                     video.srcObject = stream;
                     video.play();
-                    setInterval(updateImage, INTERVAL, video);
+                    setInterval(updateImage, INTERVAL, video, net);
             })
             .catch( 
                 function(err) {
@@ -111,7 +111,7 @@
             });
         }
         
-        function updateImage(video){
+        function updateImage(video, net){
             const context = CANVAS.getContext('2d');
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 

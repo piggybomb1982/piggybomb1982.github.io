@@ -24,23 +24,20 @@
     <script>
         var CAMERA = null;
         var CANVAS = null;
-        const WSIZE = window.innerWidth;
-        const HSIZE = window.innerHeight;
+        //const WSIZE = window.innerWidth;
+        //const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
         function main() {
             CAMERA = document.getElementById('camera');
-            CAMERA.width = WSIZE;
-            CAMERA.height = HSIZE;
+            //CAMERA.width = WSIZE;
+            //CAMERA.height = HSIZE;
             CANVAS = document.getElementById('canvas');
-            CANVAS.width = WSIZE;
-            CANVAS.height = HSIZE;
+            //CANVAS.width = WSIZE;
+            //CANVAS.height = HSIZE;
             var element_box = document.getElementById('canvas');
 
-            //camera_record_boxへの設定
-            element_box.setAttribute("width",  String(WSIZE)  + "px");
-            element_box.setAttribute("height", String(HSIZE) + "px");
             /** カメラ設定 */
             const constraints = {
                 audio: false,

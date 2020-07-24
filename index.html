@@ -43,7 +43,8 @@
             const permission = navigator.mediaDevices.getUserMedia(constraints);
             permission.then(
                 function(stream) {
-                    const video = document.createElement('video');
+                    const video  = document.querySelector("#camera");
+                    //const video = document.createElement('video');
                     video.srcObject = stream;
                     video.play();
                     // setInterval(updateImage, INTERVAL, video);

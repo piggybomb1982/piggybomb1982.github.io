@@ -86,7 +86,7 @@
         element_box.setAttribute("width",  String(video_layout_width)  + "px");
         element_box.setAttribute("height", String(video_layout_height) + "px");
     }
-    
+    var videoElement = document.querySelector('video#camera');
     videoElement.onresize = notify_change_size;
     
     </script>
@@ -145,9 +145,9 @@
     </script>
 </head>
 <body onload="main()">
-    <div class="parent" width="720px">
+    <div class="parent">
         <div class="l1">
-            <video id="camera" width="720px" autoplay playsinline></video>
+            <video id="camera" autoplay playsinline></video>
         </div>
         <div class="l2">
             <canvas id="canvas"></canvas>

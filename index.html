@@ -40,6 +40,18 @@
             -webkit-transform:rotateY(180deg);
             -moz-transform:rotateY(180deg);
         }
+        /* 制御パネル */
+        .ctr_panel{
+            top: 0px;
+            left: 0px;
+            width:400px; 
+            height: 150px;
+            margin:0;
+            padding:0;
+            border:0;
+            background-color:#333333;
+            color:#ffffff;
+        }
     </style>
     <!-- Load TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
@@ -49,7 +61,7 @@
         var CAMERA = null;
         var CANVAS = null;
         const WSIZE = window.innerWidth;
-        const HSIZE = window.innerHeight;
+        const HSIZE = window.innerHeight-150;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
@@ -60,7 +72,12 @@
             CANVAS = document.getElementById('canvas');
             CANVAS.width = WSIZE;
             CANVAS.height = HSIZE;
-            var element_box = document.getElementById('canvas');
+            var element_cp  = document.getElementsByClassName('ctr_panel');
+
+            //ctr_panelへの設定
+            for(var i=0, l=element_parent.length; i<l; i++){
+                element_cp[i].style.top   =  String(HSIZE)  + "px";
+            }
 
             /** カメラ設定 */
             const constraints = {
@@ -140,7 +157,7 @@
             <canvas id="canvas"></canvas>
         </div>
     </div>
-    <div style="width:400px; background-color:#333333; color:#ffffff;">
+    <div class="ctr_panel">
         <input type="button" value="再生" onClick="playVideo()">
         <input type="button" value="一時停止" onClick="pauseVideo()">
         <input type="button" value="↑" onClick="upVolume()">

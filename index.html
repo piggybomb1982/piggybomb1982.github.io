@@ -37,12 +37,9 @@
             position: absolute; /*absoluteに設定*/
             border: 1px solid red; /*赤い撮影枠*/
             padding: 0em 0em;
-            transform: rotateY(180deg);
-            -webkit-transform:rotateY(180deg);
-            -moz-transform:rotateY(180deg);
         }
         /* インカメで左右反転 */
-        video.active, canvas.active {
+        #video, #canvas{
             transform: rotateY(180deg);
             -webkit-transform:rotateY(180deg);
             -moz-transform:rotateY(180deg);

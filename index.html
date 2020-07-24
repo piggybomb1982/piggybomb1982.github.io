@@ -118,6 +118,7 @@
             const pose = await net.estimateSinglePose(CAMERA, {
                 flipHorizontal: false
             });
+            context.clearRect(0, 0, WSIZE, HSIZE);
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
             if(pose.keypoints[0].score > 0.5){
                 context.fillStyle = "rgb(255, 0, 0)";

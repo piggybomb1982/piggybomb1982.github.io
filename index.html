@@ -24,25 +24,27 @@
     <script>
         var CAMERA = null;
         var CANVAS = null;
-        //const WSIZE = window.innerWidth;
-        //const HSIZE = window.innerHeight;
+        const WSIZE = window.innerWidth;
+        const HSIZE = window.innerHeight;
         const INTERVAL = 42;
         var COLOR = [4, 104, 39];
 
         function main() {
             CAMERA = document.getElementById('camera');
-            //CAMERA.width = WSIZE;
-            //CAMERA.height = HSIZE;
+            CAMERA.width = WSIZE;
+            CAMERA.height = HSIZE;
             CANVAS = document.getElementById('canvas');
-            //CANVAS.width = WSIZE;
-            //CANVAS.height = HSIZE;
+            CANVAS.width = WSIZE;
+            CANVAS.height = HSIZE;
             var element_box = document.getElementById('canvas');
 
             /** カメラ設定 */
             const constraints = {
                 audio: false,
                 video: {
-                facingMode: "user"   // フロントカメラを利用する
+                    width: WSIZE,
+                    height: HSIZE,
+                    facingMode: "user"   // フロントカメラを利用する
                 //facingMode: { exact: "environment" }  // リアカメラを利用する場合
                 }
             };
@@ -66,7 +68,7 @@
         
         function updateImage(video){
             const context = CANVAS.getContext('2d');
-            context.drawImage(video,0 , 0);
+            context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
         }
 
         function getDuration() {

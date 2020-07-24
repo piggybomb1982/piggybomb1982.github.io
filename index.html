@@ -96,13 +96,14 @@
              * カメラを<video>と同期
              */
             const permission = navigator.mediaDevices.getUserMedia(constraints);
+            var net = posenet.load();
             permission.then(
                 function(stream) {
                     const video  = document.querySelector("#camera");
                     //const video = document.createElement('video');
                     video.srcObject = stream;
                     video.play();
-                    setInterval(updateImage, INTERVAL, video);
+                    setInterval(updateImage, INTERVAL, video, net);
             })
             .catch( 
                 function(err) {
@@ -110,19 +111,14 @@
             });
         }
         
-        function updateImage(video){
+        function updateImage(video,net){
             const context = CANVAS.getContext('2d');
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 
-            posenet.load().then(function(net) {
             const pose = net.estimateSinglePose(CAMERA, {
                 flipHorizontal: true
             });
-            return pose;
-            }).then(function(pose){
-                //console.log(pose);
-                getPose(pose);
-            })        
+            getPose(pose);       
         }
 
         //function getDuration() {

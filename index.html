@@ -118,8 +118,8 @@
             const pose = await net.estimateSinglePose(CAMERA, {
                 flipHorizontal: true
             });
-            context.fillRect(pose.keypoints[0].position.x, pose.keypoints[0].position.y, 10, 10);
             context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
+            context.fillRect(pose.keypoints[0].position.x, pose.keypoints[0].position.y, 10, 10);
 
             //getPose(pose);       
         }

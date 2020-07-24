@@ -120,8 +120,8 @@
             });
             return pose;
             }).then(function(pose){
-                console.log(pose);
-                //getPose(pose);
+                //console.log(pose);
+                getPose(pose);
             })        
         }
 
@@ -131,7 +131,7 @@
         //}
         function getPose(pose) {
             //動画の長さ（秒）を表示
-            document.getElementById("nagasa").innerHTML = pose.keypoints.position.x;
+            document.getElementById("nagasa").innerHTML = pose.keypoints[0].position.x;
         }
         function playVideo() {
             //再生完了の表示をクリア

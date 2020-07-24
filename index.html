@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
     <!-- Load Posenet -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
-    <script>
+    <!-- <script>
         var CANVAS_CAMERA = null;
         var EFFECTS_CAMERA = null;
         const SIZE = 400;
@@ -74,13 +74,14 @@
                 }
             }
         }
-    </script>
+    </script> -->
 </head>
   <body onload = "main()">
 
     <h1>HTML5カメラ</h1>
     <video id = "camera" autoplay playsinline></video>
-    <canvas id = "effects"></canvas>
+    <canvas id = "canvas"></canvas>
+    <script src="./js/index.js"></script>
     <!--<video id="camera" autoplay playsinline></video>
     <canvas id="picture" width="300" height="200"></canvas>
     <form>

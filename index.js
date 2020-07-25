@@ -79,11 +79,11 @@
         context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 
         if(eflag){
-            if(!endTime){
-                dTime=performance.now() - endTime;
+            if(endTime===null){
+                dTime = 0;
             }
             else{
-                dTime = 0;
+                dTime=performance.now() - endTime;
             }
             endTime = performance.now();
             

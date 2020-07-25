@@ -2,10 +2,8 @@
 
     var CAMERA = null;
     var CANVAS = null;
-    const WSIZE = win.innerWidth;
-    const HSIZE = win.innerHeight;
-    //const WSIZE = 600;
-    //const HSIZE = 800;
+    const WSIZE;
+    const HSIZE;
     const INTERVAL = 42;
     const POSENUM = 17;
     var COLOR = [4, 104, 39];
@@ -18,11 +16,7 @@
     async function main() {
         const net = await posenet.load();
         CAMERA = doc.getElementById('camera');
-        CAMERA.width = WSIZE;
-        CAMERA.height = HSIZE;
         CANVAS = doc.getElementById('canvas');
-        CANVAS.width = WSIZE;
-        CANVAS.height = HSIZE;
 
         for(var i=0; i<POSENUM; i++){
             x_old[i]=0;
@@ -33,8 +27,6 @@
         const constraints = {
             audio: false,
             video: {
-                width: WSIZE,
-                height: HSIZE,
                 //facingMode: "user"   // フロントカメラを利用する
                 facingMode: { exact: "environment" }  // リアカメラを利用する場合
             }
@@ -63,6 +55,8 @@
         const pose = await net.estimateSinglePose(CAMERA, {
             flipHorizontal: false
         });
+        WSIZE  = win.innerWidth;
+        HSIZE = win.innerHeight;
         context.clearRect(0, 0, WSIZE, HSIZE);
         context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
         var cnt = 0;

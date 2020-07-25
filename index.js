@@ -40,6 +40,7 @@
                 const video  = doc.querySelector("#camera");
                 //const video = doc.createElement('video');
                 video.srcObject = stream;
+                video.hidden = true;
                 video.play();
                 setInterval(updateImage, INTERVAL, video, net);
         })

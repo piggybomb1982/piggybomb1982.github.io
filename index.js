@@ -39,8 +39,6 @@
         permission.then(
             function(stream) {
                 const video  = doc.querySelector("#camera");
-                video.width = video.videoWidth;
-                video.height = video.videoHeight;
                 //const video = doc.createElement('video');
                 video.srcObject = stream;
                 video.play();
@@ -56,6 +54,8 @@
         const context = CANVAS.getContext('2d');
         WSIZE  = video.videoWidth;
         HSIZE = video.videoHeight;
+        video.width = WSIZE;
+        video.height = HSIZE;
         CANVAS.width = WSIZE;
         CANVAS.height = HSIZE;
         const pose = await net.estimateSinglePose(video, {

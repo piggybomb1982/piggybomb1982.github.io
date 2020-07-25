@@ -1,0 +1,51 @@
+
+.parent {
+    top: 0px;   /*動的に変更されるので適当*/
+    left: 0px;  /*動的に変更されるので適当*/
+    margin:0;
+    padding:0;
+    position: absolute; /*absoluteに設定*/
+    border:0;
+}
+.l1 { /*前回の話の通り、動画ストリームが確定してから自動的にサイズが決まる*/
+    top: 0px;   /*動的に変更されるので適当*/
+    left: 0px;  /*動的に変更されるので適当*/
+    margin:0;
+    padding:0;
+    position: absolute; /*absoluteに設定*/
+    border:0;
+}
+.l2 {
+    top: 0px;   /*動的に変更されるので適当*/
+    left: 0px;  /*動的に変更されるので適当*/
+    margin:0;
+    padding:0;
+    position: absolute; /*absoluteに設定*/
+    border:0;
+}
+/* インカメで左右反転 */
+#camera, #canvas{
+    margin:0;
+    padding:0;
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
+}
+/* 制御パネル */
+.ctr_panel{
+    top: 0px;
+    left: 0px;
+    width:400px; 
+    height: 150px;
+    margin:0;
+    padding:0;
+    border:0;
+    position: absolute; /*absoluteに設定*/
+    background-color:#333333;
+    color:#ffffff;
+}
+

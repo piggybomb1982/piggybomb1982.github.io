@@ -39,6 +39,8 @@
         permission.then(
             function(stream) {
                 const video  = doc.querySelector("#camera");
+                video.width = video.clientWidth;
+                video.height = video.clientHeight;
                 //const video = doc.createElement('video');
                 video.srcObject = stream;
                 video.play();

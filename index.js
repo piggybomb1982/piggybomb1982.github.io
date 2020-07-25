@@ -58,8 +58,8 @@
         WSIZE  = win.innerWidth;
         HSIZE = win.innerHeight;
         context.clearRect(0, 0, WSIZE, HSIZE);
-        // context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
-        context.drawImage(video,0 , 0);
+        context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
+        //context.drawImage(video,0 , 0);
         var cnt = 0;
         var r2 = 0;
         for(var i=0; i<POSENUM; i++){

@@ -10,8 +10,9 @@
     var y_old = Array(POSENUM);
     var r2_old = 0;
     var totalTime = 0;
-    var startTime = performance.now(); // 開始時間
-    var endTime = performance.now(); // 終了時間
+    var totalR = 0;
+    var dTime = null; // 前フレームとの差分時間
+    var endTime = null; // 前フレームの終了時間
     var eflag = false; 
 
     main();
@@ -78,13 +79,21 @@
         context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
 
         if(eflag){
+            if(!endTime){
+                dTime=performance.now() - endTime;
+            }
+            else{
+                dTime = 0;
+            }
+            endTime = performance.now();
+            
             var cnt = 0;
             var r2 = 0;
             for(var i=0; i<POSENUM; i++){
                 if(pose.keypoints[i].score > 0.5){
                     context.fillStyle = "rgb(255, 0, 0)";
                     context.fillRect(pose.keypoints[i].position.x, pose.keypoints[i].position.y, 10, 10);
-                    r2 = Math.sqrt((pose.keypoints[i].position.x - x_old[i])^2 + (pose.keypoints[i].position.y - y_old[i])^2 );
+                    r2 = Math.sqrt(Math.pow(pose.keypoints[i].position.x - x_old[i],2) + Math.pow(pose.keypoints[i].position.y - y_old[i],2) );
                     x_old[i] = pose.keypoints[i].position.x;
                     y_old[i] = pose.keypoints[i].position.y;
                     cnt = cnt + 1;
@@ -97,6 +106,9 @@
                 r2 = r2 / cnt;
                 r2_old = r2;
             } 
+            r2 = r2 * dTime;
+            totalTime = totalTime + dTime;
+            totalR = totalR + r2;
             //文字のスタイルを指定
             context.font = '32px serif';
             context.fillStyle = '#FF0000';
@@ -105,7 +117,9 @@
             context.textAlign = 'center';
 
             //座標を指定して文字を描く（座標は画像の中心に）
-            context.fillText("現在の活性度 " + String(r2), 0, HSIZE-50);
+            context.fillText("現在の活性度 " + String(r2), 0, HSIZE-150);
+            context.fillText("トータル活性度 " + String(totalR), 0, HSIZE-100);
+            context.fillText("荊軻時間 " + String(totalTime), 0, HSIZE-50);
         }
 
     }

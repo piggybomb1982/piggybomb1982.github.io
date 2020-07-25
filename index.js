@@ -52,7 +52,7 @@
 
     async function updateImage(video, net){
         const context = CANVAS.getContext('2d');
-        const pose = await net.estimateSinglePose(CAMERA, {
+        const pose = await net.estimateSinglePose(video, {
             flipHorizontal: false
         });
         WSIZE  = win.innerWidth;

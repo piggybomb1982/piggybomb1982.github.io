@@ -40,7 +40,6 @@
                 const video  = doc.querySelector("#camera");
                 //const video = doc.createElement('video');
                 video.srcObject = stream;
-                video.hidden = true;
                 video.play();
                 setInterval(updateImage, INTERVAL, video, net);
         })
@@ -56,8 +55,6 @@
         HSIZE = video.videoHeight;
         video.width = WSIZE;
         video.height = HSIZE;
-        CAMERA.width = WSIZE;
-        CAMERA.height = HSIZE;
         CANVAS.width = WSIZE;
         CANVAS.height = HSIZE;
         const pose = await net.estimateSinglePose(video, {

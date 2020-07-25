@@ -6,7 +6,6 @@
     var HSIZE = null;
     const INTERVAL = 42;
     const POSENUM = 17;
-    var COLOR = [4, 104, 39];
     var x_old = Array(POSENUM);
     var y_old = Array(POSENUM);
     var r2_old = 0;
@@ -56,6 +55,8 @@
         HSIZE = video.videoHeight;
         video.width = WSIZE;
         video.height = HSIZE;
+        CAMERA.width = WSIZE;
+        CAMERA.height = HSIZE;
         CANVAS.width = WSIZE;
         CANVAS.height = HSIZE;
         const pose = await net.estimateSinglePose(video, {

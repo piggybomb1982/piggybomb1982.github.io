@@ -63,7 +63,7 @@
 
         //context.clearRect(0, 0, WSIZE, HSIZE);
         context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
-        //context.drawImage(video,0 , 0);
+
         var cnt = 0;
         var r2 = 0;
         for(var i=0; i<POSENUM; i++){
@@ -83,6 +83,16 @@
             r2 = r2 / cnt;
             r2_old = r2;
         } 
+        var text = document.getElementById(text_id);
+        //文字のスタイルを指定
+        context.font = '32px serif';
+        context.fillStyle = '#FF0000';
+        //文字の配置を指定（左上基準にしたければtop/leftだが、文字の中心座標を指定するのでcenter
+        context.textBaseline = 'bottom';
+        context.textAlign = 'center';
+        //座標を指定して文字を描く（座標は画像の中心に）
+        context.fillText("現在の活性度 " + String(r2), 0, HSIZE-50);
+
     }
 
     //function getDuration() {

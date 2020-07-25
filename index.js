@@ -39,8 +39,8 @@
         permission.then(
             function(stream) {
                 const video  = doc.querySelector("#camera");
-                video.width = video.clientWidth;
-                video.height = video.clientHeight;
+                video.width = video.videoWidth;
+                video.height = video.videoHeight;
                 //const video = doc.createElement('video');
                 video.srcObject = stream;
                 video.play();
@@ -54,15 +54,15 @@
 
     async function updateImage(video, net){
         const context = CANVAS.getContext('2d');
-        WSIZE  = video.clientWidth;
-        HSIZE = video.clientHeight;
-        CANVAS.width = video.clientWidth;
-        CANVAS.height = video.clientHeight;
+        WSIZE  = video.videoWidth;
+        HSIZE = video.videoHeight;
+        CANVAS.width = WSIZE;
+        CANVAS.height = HSIZE;
         const pose = await net.estimateSinglePose(video, {
             flipHorizontal: false
         });
 
-        context.clearRect(0, 0, WSIZE, HSIZE);
+        //context.clearRect(0, 0, WSIZE, HSIZE);
         context.drawImage(video,0 , 0, WSIZE, HSIZE, 0,0,WSIZE, HSIZE);
         //context.drawImage(video,0 , 0);
         var cnt = 0;

@@ -109,20 +109,20 @@
         //}, false);
     //}
 
-    function pauseVideo() {
+    //function pauseVideo() {
         //動画を一時停止
-        CAMERA.pause();
-    }
+    //    CAMERA.pause();
+    //}
 
-    function upVolume() {
+    //function upVolume() {
         //音量を上げる
-        CAMERA.volume = CAMERA.volume + 0.25;
-    }
+    //    CAMERA.volume = CAMERA.volume + 0.25;
+    //}
 
-    function downVolume() {
+    //function downVolume() {
         //音量を下げる
-        CAMERA.volume = CAMERA.volume - 0.25;
-    }
+    //    CAMERA.volume = CAMERA.volume - 0.25;
+    //}
 
 
 })(this, document);

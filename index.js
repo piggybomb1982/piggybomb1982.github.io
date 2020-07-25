@@ -2,8 +2,8 @@
 
     var CAMERA = null;
     var CANVAS = null;
-    const WSIZE;
-    const HSIZE;
+    var WSIZE;
+    var HSIZE;
     const INTERVAL = 42;
     const POSENUM = 17;
     var COLOR = [4, 104, 39];

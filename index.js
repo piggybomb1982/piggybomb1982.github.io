@@ -27,8 +27,8 @@
         const constraints = {
             audio: false,
             video: {
-                //facingMode: "user"   // フロントカメラを利用する
-                facingMode: { exact: "environment" }  // リアカメラを利用する場合
+                facingMode: "user"   // フロントカメラを利用する
+                //facingMode: { exact: "environment" }  // リアカメラを利用する場合
             }
         };
         /**

@@ -2,8 +2,8 @@
 
     var CAMERA = null;
     var CANVAS = null;
-    const WSIZE = window.innerWidth;
-    const HSIZE = window.innerHeight;
+    const WSIZE = win.innerWidth;
+    const HSIZE = win.innerHeight;
     //const WSIZE = 600;
     //const HSIZE = 800;
     const INTERVAL = 42;
@@ -12,7 +12,7 @@
     var x_old = Array(POSENUM);
     var y_old = Array(POSENUM);
     var r2_old = 0;
-    
+
     main();
 
     async function main() {
@@ -23,12 +23,6 @@
         CANVAS = doc.getElementById('canvas');
         CANVAS.width = WSIZE;
         CANVAS.height = HSIZE;
-        var element_cp  = doc.getElementsByClassName('ctr_panel');
-
-        //ctr_panelへの設定
-        for(var i=0, l=element_cp.length; i<l; i++){
-            element_cp[i].style.top   =  String(HSIZE)  + "px";
-        }
 
         for(var i=0; i<POSENUM; i++){
             x_old[i]=0;
@@ -41,8 +35,8 @@
             video: {
                 width: WSIZE,
                 height: HSIZE,
-                facingMode: "user"   // フロントカメラを利用する
-            //facingMode: { exact: "environment" }  // リアカメラを利用する場合
+                //facingMode: "user"   // フロントカメラを利用する
+                facingMode: { exact: "environment" }  // リアカメラを利用する場合
             }
         };
         /**
@@ -89,32 +83,31 @@
         else{
             r2 = r2 / cnt;
             r2_old = r2;
-        }
-        getPose(r2);       
+        } 
     }
 
     //function getDuration() {
         //動画の長さ（秒）を表示
         //doc.getElementById("nagasa").innerHTML = CAMERA.duration;
     //}
-    function getPose(r2) {
+    //function getPose(r2) {
         //動画の長さ（秒）を表示
-        doc.getElementById("nagasa").innerHTML = r2;
-    }
-    function playVideo() {
+        //doc.getElementById("nagasa").innerHTML = r2;
+    //}
+    //function playVideo() {
         //再生完了の表示をクリア
-        doc.getElementById("kanryou").innerHTML = "";
+        //doc.getElementById("kanryou").innerHTML = "";
         //動画を再生
-        CAMERA.play();
+        //CAMERA.play();
         //現在の再生位置（秒）を表示
-        CAMERA.addEventListener("timeupdate", function(){
-            doc.getElementById("ichi").innerHTML = CAMERA.currentTime;
-        }, false);
+        //CAMERA.addEventListener("timeupdate", function(){
+        //    doc.getElementById("ichi").innerHTML = CAMERA.currentTime;
+        //}, false);
         //再生完了を知らせる
-        CAMERA.addEventListener("ended", function(){
-            doc.getElementById("kanryou").innerHTML = "動画の再生が完了しました。";
-        }, false);
-    }
+        //CAMERA.addEventListener("ended", function(){
+        //    doc.getElementById("kanryou").innerHTML = "動画の再生が完了しました。";
+        //}, false);
+    //}
 
     function pauseVideo() {
         //動画を一時停止

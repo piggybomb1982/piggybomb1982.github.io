@@ -55,7 +55,7 @@
 
         doc.addEventListener("click", () => {
             if(eflag){
-
+                win.location.href = './result.html';
             }
             else{
                 eflag = true;
